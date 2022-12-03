@@ -26,7 +26,7 @@
 //                 'avatar_url' => 'default.jpg',
 //                 'role' => 0
 //             ]);
-            if ($user)
+            if (!$user)
             {
                 return response(['alo' => 'hong co cai lon']);
             }
