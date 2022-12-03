@@ -77,7 +77,7 @@ class UserController extends Controller
 
             if ($user->avatar_url)
             {
-                $absolutePath = public_path('storage') . '/images/profile/' . $user->avatar_url;
+                $absolutePath = public_path('/images/profile/')  . $user->avatar_url;
                 File::delete($absolutePath);
             }
         }
@@ -118,7 +118,7 @@ class UserController extends Controller
         {
             throw new \Exception('du lieu anh bi sai');
         }
-        $dir = public_path('storage') . '/images/profile/';
+        $dir = public_path('/images/profile/');
         $fake_name_file = Str::random();
         $file = $fake_name_file . '.jpg';
         $relativePath = $dir . $file;

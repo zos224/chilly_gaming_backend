@@ -197,7 +197,7 @@ class GameController extends Controller
             $data['thumb_image'] = $relativePath;
             if ($game->thumb_image)
             {
-                $absolutePath = public_path('storage') . '/images/games/' . $game->thumb_image;
+                $absolutePath = public_path('/images/games/') . $game->thumb_image;
                 File::delete($absolutePath);
             }
         }
@@ -207,7 +207,7 @@ class GameController extends Controller
             $data['image1'] = $relativePath;
             if ($game->image1)
             {
-                $absolutePath = public_path('storage') . '/images/games/' . $game->image1;
+                $absolutePath = public_path('/images/games/') . $game->image1;
                 File::delete($absolutePath);
             }
         }
@@ -217,7 +217,7 @@ class GameController extends Controller
             $data['image2'] = $relativePath;
             if ($game->image2)
             {
-                $absolutePath = public_path('storage') . '/images/games/' . $game->image2;
+                $absolutePath = public_path('/images/games/') . $game->image2;
                 File::delete($absolutePath);
             }
         }
@@ -227,7 +227,7 @@ class GameController extends Controller
             $data['image3'] = $relativePath;
             if ($game->image3)
             {
-                $absolutePath = public_path('storage') . '/images/games/' . $game->image3;
+                $absolutePath = public_path('/images/games/') . $game->image3;
                 File::delete($absolutePath);
             }
         }
@@ -237,7 +237,7 @@ class GameController extends Controller
             $data['image4'] = $relativePath;
             if ($game->image4)
             {
-                $absolutePath = public_path('storage') . '/images/games/' . $game->image4;
+                $absolutePath = public_path('/images/games/') . $game->image4;
                 File::delete($absolutePath);
             }
         }
@@ -255,27 +255,27 @@ class GameController extends Controller
     {
         if ($game->thumb_image)
         {
-            $absolutePath = public_path('storage') . '/images/games/' . $game->thumb_image;
+            $absolutePath = public_path('/images/games/') . $game->thumb_image;
             File::delete($absolutePath);
         }
         if ($game->image1)
         {
-            $absolutePath = public_path('storage') . '/images/games/' . $game->image1;
+            $absolutePath = public_path('/images/games/') . $game->image1;
             File::delete($absolutePath);
         }
         if ($game->image2)
         {
-            $absolutePath = public_path('storage') . '/images/games/' . $game->image2;
+            $absolutePath = public_path('/images/games/') . $game->image2;
             File::delete($absolutePath);
         }
         if ($game->image3)
         {
-            $absolutePath = public_path('storage') . '/images/games/' . $game->image3;
+            $absolutePath = public_path('/images/games/') . $game->image3;
             File::delete($absolutePath);
         }
         if ($game->image4)
         {
-            $absolutePath = public_path('storage') . '/images/games/' . $game->image4;
+            $absolutePath = public_path('/images/games/') . $game->image4;
             File::delete($absolutePath);
         }
         $game->delete();
@@ -303,7 +303,7 @@ class GameController extends Controller
         {
             throw new \Exception('du lieu anh bi sai');
         }
-        $dir = public_path('storage') . '/images/games/';
+        $dir = public_path('/images/games/');
         if (!File::exists($dir))
         {
             File::makeDirectory($dir, 0755, true);
@@ -325,7 +325,7 @@ class GameController extends Controller
 
             if ($game->$image)
             {
-                $absolutePath = public_path('storage') . '/images/games/' . $game->$image;
+                $absolutePath = public_path('/images/games/') . $game->$image;
                 File::delete($absolutePath);
             }
             return $relativePath;

@@ -94,7 +94,7 @@ class ArticleController extends Controller
             $data['thumb_image'] = $relativePath;
             if ($article->thumb_image)
             {
-                $absolutePath = public_path('storage') . '/images/articles/' . $article->thumb_image;
+                $absolutePath = public_path('/images/articles/') . $article->thumb_image;
                 File::delete($absolutePath);
             }
         }
@@ -110,7 +110,13 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        if ($article->thumb_image)
+        {
+            $absolutePath = public_path('/images/articles/') . $article->thumb_image;
+            File::delete($absolutePath);
+        }
+        $article->delete();
+        return response('okela', 200);
     }
 
     public function uploadImage(Request $request)
@@ -122,8 +128,8 @@ class ArticleController extends Controller
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $fileName . '_' . time() . '.' . $extension;
 
-            $request->file('upload')->move(public_path('storage') . '/images/articles/', $fileName);
-            $url = asset('storage/images/articles/' . $fileName);
+            $request->file('upload')->move(public_path('/images/articles/'), $fileName);
+            $url = asset('/images/articles/' . $fileName);
 
             return response([
                 'fileName' => $fileName,
@@ -154,7 +160,7 @@ class ArticleController extends Controller
         {
             throw new \Exception('du lieu anh bi sai');
         }
-        $dir = public_path('storage') . '/images/articles/';
+        $dir = public_path('/images/articles/');
         $fake_name_file = Str::random();
         $file = $fake_name_file . '.jpg';
         $relativePath = $dir . $file;
