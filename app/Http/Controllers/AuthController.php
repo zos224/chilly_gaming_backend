@@ -42,12 +42,12 @@
                 'password' => 'required',
                 'remember' => 'boolean'
             ]);
-            echo $data;
             $remember = $data['remember'] ?? false;
             unset($data['remember']);
             if (!Auth::attempt($data,$remember)){
                 return response([
-                    'error' => 'Thông tin đăng nhập không chính xác'
+                    'error' => 'Thông tin đăng nhập không chính xác',
+                    'data' => $data
                 ],422);
             }
 
