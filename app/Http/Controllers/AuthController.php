@@ -19,21 +19,28 @@
                     Password::min(8)->mixedCase()->numbers()->symbols()
                 ]
             ]);
-            return response([
-            'data' => $data]);
-//             $user = User::create([
-//                 'username' => $data['username'],
-//                 'email' => $data['email'],
-//                 'password' => bcrypt($data['password']),
-//                 'avatar_url' => 'default.jpg',
-//                 'role' => 0
-//             ]);
+            $user = User::create([
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'avatar_url' => 'default.jpg',
+                'role' => 0
+            ]);
+            if ($user)
+            {
+                return response(['alo' => 'co user ne ma', 'user' => $user]);
+            }
+            else 
+            {
+                return response(['alo' => 'co cai lon']);
+            }
             
-//             $token = $user->createToken('main')->plainTextToken;
+            
+            //$token = $user->createToken('main')->plainTextToken;
             
 //             return response([
 //                 'user' => $user,
-//                 'token' => $token
+//                 //'token' => $token
 //             ]);
         }
 
@@ -48,8 +55,7 @@
             unset($data['remember']);
             if (!Auth::attempt($data,$remember)){
                 return response([
-                    'error' => 'Thông tin đăng nhập không chính xác',
-                    'data' => $data
+                    'error' => 'Thông tin đăng nhập không chính xác'
                 ],422);
             }
 
