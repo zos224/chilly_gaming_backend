@@ -26,14 +26,6 @@
 //                 'avatar_url' => 'default.jpg',
 //                 'role' => 0
 //             ]);
-            $user = new User([
-                'username' => 'phong224',
-                'email' => 'ngophong@gmail.com',
-                'password' => bcrypt('Phong@224'),
-                'avatar_url' => 'default.jpg',
-                'role' => 0
-            ]);
-            $user->save();
             if ($user)
             {
                 return response(['alo' => 'co user ne ma', 'user' => $user]);
