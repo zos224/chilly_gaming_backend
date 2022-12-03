@@ -26,14 +26,8 @@
 //                 'avatar_url' => 'default.jpg',
 //                 'role' => 0
 //             ]);
-            if ($user)
-            {
-                return response(['alo' => 'co user ne ma', 'user' => $user]);
-            }
-            else 
-            {
                 return response(['alo' => 'co cai lon']);
-            }
+      
             
             
             //$token = $user->createToken('main')->plainTextToken;
