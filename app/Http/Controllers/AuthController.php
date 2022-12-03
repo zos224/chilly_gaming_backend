@@ -26,6 +26,11 @@
 //                 'avatar_url' => 'default.jpg',
 //                 'role' => 0
 //             ]);
+            if ($data)
+            {
+                return response(['alo' => 'hong co cai lon']);
+            }
+            
                 return response(['alo' => 'co cai lon']);
       
             
