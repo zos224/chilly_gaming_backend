@@ -27,11 +27,10 @@
                 'role' => 0
             ]);
 
-            $token = $user->createToken('main')->plainTextToken;
             
             return response([
                 'user' => $user,
-                'token' => $token
+
             ]);
         }
 
