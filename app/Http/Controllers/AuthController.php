@@ -42,7 +42,7 @@
                 'password' => 'required',
                 'remember' => 'boolean'
             ]);
-
+            echo $data;
             $remember = $data['remember'] ?? false;
             unset($data['remember']);
             if (!Auth::attempt($data,$remember)){
