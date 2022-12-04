@@ -19,20 +19,29 @@
                     Password::min(8)->mixedCase()->numbers()->symbols()
                 ]
             ]);
-            $user = User::create([
-                'username' => $data['username'],
+            
+//             $user = User::create([
+//                 'username' => $data['username'],
+//                 'email' => $data['email'],
+//                 'password' => bcrypt($data['password']),
+//                 'avatar_url' => 'default.jpg',
+//                 'role' => 0
+//             ]);
+            
+            $user = new User([
+                    'username' => $data['username'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'avatar_url' => 'default.jpg',
                 'role' => 0
             ]);
-      
-            //$token = $user->createToken('main')->plainTextToken;
+        $user->save();
+            $token = $user->createToken('main')->plainTextToken;
             
-//             return response([
-//                 'user' => $user,
-//                 //'token' => $token
-//             ]);
+            return response([
+                'user' => $user,
+                'token' => $token
+            ]);
         }
 
         public function login(Request $request)
