@@ -20,22 +20,14 @@
                 ]
             ]);
             
-//             $user = User::create([
-//                 'username' => $data['username'],
-//                 'email' => $data['email'],
-//                 'password' => bcrypt($data['password']),
-//                 'avatar_url' => 'default.jpg',
-//                 'role' => 0
-//             ]);
-            
-            $user = new User([
-                    'username' => $data['username'],
+            $user = User::create([
+                'username' => $data['username'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'avatar_url' => 'default.jpg',
                 'role' => 0
             ]);
-        $user->save();
+            
             $token = $user->createToken('main')->plainTextToken;
             
             return response([
