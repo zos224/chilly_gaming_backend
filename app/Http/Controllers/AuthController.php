@@ -19,6 +19,7 @@
                     Password::min(8)->mixedCase()->numbers()->symbols()
                 ]
             ]);
+            
             $user = User::create([
                 'username' => $data['username'],
                 'email' => $data['email'],
@@ -26,7 +27,7 @@
                 'avatar_url' => 'default.jpg',
                 'role' => 0
             ]);
-
+            
             $token = $user->createToken('main')->plainTextToken;
             
             return response([
@@ -42,7 +43,6 @@
                 'password' => 'required',
                 'remember' => 'boolean'
             ]);
-
             $remember = $data['remember'] ?? false;
             unset($data['remember']);
             if (!Auth::attempt($data,$remember)){
